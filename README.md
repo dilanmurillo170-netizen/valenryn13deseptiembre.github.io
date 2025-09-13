@@ -2,86 +2,63 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Ajuste de escala para que se vea más pequeño en iPhone 7 -->
+  <meta name="viewport" content="width=375, initial-scale=0.85, maximum-scale=1.0, user-scalable=no">
   <title>¿Quieres ser mi novia? ❤️‍🩹</title>
   <style>
-    /* Estilos generales */
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #ffb6c1, #ff69b4);
       color: #fff;
+      text-align: center;
     }
 
     body {
       display: flex;
       justify-content: center;
       align-items: center;
-      text-align: center;
+      min-height: 100vh;
     }
 
     .container {
       width: 100%;
-      max-width: 700px;
-      padding: 20px;
+      max-width: 600px; /* más pequeño que iPhone 13 */
+      padding: 15px;
       box-sizing: border-box;
     }
 
-    /* Galería de imágenes */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-      margin-bottom: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      margin-bottom: 20px;
     }
 
     .gallery img {
       width: 100%;
-      height: auto;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       cursor: pointer;
       transition: transform 0.3s;
     }
 
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
+    .gallery img:hover { transform: scale(1.05); }
 
-    /* Declaración */
     .declaration {
       background: rgba(255, 255, 255, 0.2);
-      padding: 20px;
+      padding: 15px;
       border-radius: 15px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
       margin-bottom: 20px;
     }
 
-    .declaration h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      color: #fff;
-    }
+    .declaration h1 { font-size: 1.6rem; margin-bottom: 10px; }
+    .declaration p { font-size: 0.95rem; margin-bottom: 15px; line-height: 1.4; text-align: justify; }
+    .question { font-size: 1.2rem; margin-bottom: 12px; font-weight: bold; }
 
-    .declaration p {
-      font-size: 1.1rem;
-      margin-bottom: 15px;
-      line-height: 1.5;
-      text-align: justify;
-    }
-
-    .question {
-      font-size: 1.4rem;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-
-    /* Botones */
     .buttons {
       display: flex;
-      gap: 15px;
+      gap: 10px;
       justify-content: center;
       flex-wrap: wrap;
     }
@@ -89,16 +66,14 @@
     .btn {
       background: #fff;
       color: #ff69b4;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: 0.3s;
-      flex: 1 1 45%;
-      max-width: 240px;
       text-decoration: none;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      flex: 1 1 45%;
+      max-width: 180px;
       display: inline-block;
+      transition: 0.3s;
     }
 
     .btn:hover {
@@ -106,65 +81,26 @@
       color: #fff;
     }
 
-    /* Modal de texto */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-      z-index: 1000;
-    }
-
-    .modal-backdrop.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .modal {
-      background: #fff;
-      color: #333;
-      padding: 20px;
-      border-radius: 12px;
-      max-width: 90%;
-      text-align: left;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-      position: relative;
-    }
-
-    .modal h2 {
-      margin-top: 0;
-      color: #ff69b4;
-    }
-
-    /* Modal de imagen */
+    /* Modal imágenes */
     .image-viewer {
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.85);
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s;
       z-index: 2000;
     }
 
-    .image-viewer.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
+    .image-viewer.show { opacity: 1; pointer-events: auto; }
 
     .image-viewer img {
-      max-width: 95%;
-      max-height: 90%;
+      max-width: 90%;
+      max-height: 85%;
       border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
     }
 
     .close-img {
@@ -200,7 +136,6 @@
     </div>
   </div>
 
-  <!-- Modal de imágenes -->
   <div id="imageViewer" class="image-viewer">
     <span class="close-img" onclick="closeImage()">&times;</span>
     <img id="viewerImg" src="" alt="Foto ampliada">
@@ -223,7 +158,7 @@
     }
 
     viewer.addEventListener('click', (e) => {
-      if (e.target === viewer) closeImage();
+      if(e.target === viewer) closeImage();
     });
   </script>
 </body>
