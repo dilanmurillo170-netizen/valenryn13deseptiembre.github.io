@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -115,6 +114,123 @@
 
     .modal-backdrop.show {
       opacity: 1;
+      pointer-events: auto;<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Quieres ser mi novia? ❤️‍🩹</title>
+  <style>
+    /* Estilos generales */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* Galería de imágenes */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Declaración */
+    .declaration {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 18px;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      margin-bottom: 20px;
+    }
+
+    .declaration h1 {
+      font-size: 1.9rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .declaration p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+      line-height: 1.4;
+      text-align: justify;
+    }
+
+    .question {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    /* Botones */
+    .buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: #fff;
+      color: #ff69b4;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      flex: 1 1 45%;
+      max-width: 220px;
+      text-decoration: none; /* para links de WhatsApp */
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #ff69b4;
+      color: #fff;
+    }
+
+    /* Modal de texto */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      z-index: 1000;
+    }
+
+    .modal-backdrop.show {
+      opacity: 1;
       pointer-events: auto;
     }
 
@@ -196,13 +312,13 @@
       <div class="question">¿Quieres ser mi novia?</div>
 
       <div class="buttons">
-        <button class="btn" onclick="openThanks()">Sí ❤️‍🩹</button>
-        <button class="btn" onclick="openThanks()">Obviamente sí 😍</button>
+        <a class="btn" href="https://wa.me/573146553778?text=Hola,%20acepto%20ser%20tu%20novia%20❤️" target="_blank">Sí ❤️‍🩹</a>
+        <a class="btn" href="https://wa.me/573146553778?text=Hola,%20obviamente%20sí%20😍" target="_blank">Obviamente sí 😍</a>
       </div>
     </div>
   </div>
 
-  <!-- Modal texto -->
+  <!-- Modal texto (opcional, se puede quitar si solo quieres WhatsApp) -->
   <div id="modalBackdrop" class="modal-backdrop">
     <div class="modal">
       <h2>Gracias por decir que sí ❤️‍🩹</h2>
@@ -224,16 +340,6 @@
     const viewer = document.getElementById('imageViewer');
     const viewerImg = document.getElementById('viewerImg');
 
-    function openThanks() {
-      backdrop.classList.add('show');
-    }
-
-    backdrop.addEventListener('click', (e) => {
-      if (e.target === backdrop) {
-        backdrop.classList.remove('show');
-      }
-    });
-
     document.querySelectorAll('.gallery img').forEach(img => {
       img.addEventListener('click', () => {
         viewerImg.src = img.src;
@@ -248,12 +354,6 @@
 
     viewer.addEventListener('click', (e) => {
       if (e.target === viewer) closeImage();
-    });
-  </script>
-</body>
-</html>
-
-
     });
   </script>
 </body>
