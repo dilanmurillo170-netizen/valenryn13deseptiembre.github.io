@@ -1,10 +1,11 @@
-
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>¿Quieres ser mi novia? ❤️‍🩹</title>
   <style>
+    /* Estilos generales */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -15,20 +16,21 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      padding: 20px;
+      padding: 15px;
       box-sizing: border-box;
     }
 
     .container {
-      max-width: 900px;
       width: 100%;
+      max-width: 650px; /* óptimo para iPhone 7 Plus y 13 */
     }
 
+    /* Galería de imágenes */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-bottom: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
     }
 
     .gallery img {
@@ -44,36 +46,37 @@
       transform: scale(1.05);
     }
 
+    /* Declaración */
     .declaration {
       background: rgba(255, 255, 255, 0.2);
-      padding: 20px;
+      padding: 18px;
       border-radius: 15px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-      margin: 0 auto 20px auto;
-      max-width: 600px;
+      margin-bottom: 20px;
     }
 
     .declaration h1 {
-      font-size: 2rem;
+      font-size: 1.9rem;
       margin-bottom: 10px;
       color: #fff;
     }
 
     .declaration p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-      line-height: 1.5;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      line-height: 1.4;
     }
 
     .question {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: bold;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 
+    /* Botones */
     .buttons {
       display: flex;
-      gap: 15px;
+      gap: 12px;
       justify-content: center;
       flex-wrap: wrap;
     }
@@ -82,11 +85,13 @@
       background: #fff;
       color: #ff69b4;
       border: none;
-      padding: 10px 20px;
+      padding: 10px 15px;
       border-radius: 10px;
       font-size: 1rem;
       cursor: pointer;
       transition: 0.3s;
+      flex: 1 1 45%;
+      max-width: 220px;
     }
 
     .btn:hover {
@@ -107,21 +112,23 @@
       transition: opacity 0.3s;
       z-index: 1000;
     }
+
     .modal-backdrop.show {
       opacity: 1;
       pointer-events: auto;
     }
+
     .modal {
       background: #fff;
       color: #333;
-      padding: 20px;
+      padding: 18px;
       border-radius: 12px;
-      max-width: 400px;
-      width: 90%;
+      max-width: 90%;
       text-align: left;
       box-shadow: 0 6px 20px rgba(0,0,0,0.4);
       position: relative;
     }
+
     .modal h2 {
       margin-top: 0;
       color: #ff69b4;
@@ -140,34 +147,36 @@
       transition: opacity 0.3s;
       z-index: 2000;
     }
+
     .image-viewer.show {
       opacity: 1;
       pointer-events: auto;
     }
+
     .image-viewer img {
-      max-width: 90%;
+      max-width: 95%;
       max-height: 90%;
       border-radius: 12px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.5);
     }
+
     .close-img {
       position: absolute;
-      top: 20px;
-      right: 30px;
+      top: 15px;
+      right: 20px;
       font-size: 2rem;
       color: #fff;
       cursor: pointer;
       font-weight: bold;
     }
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      .gallery {
-        grid-template-columns: 1fr; /* En celular, una imagen por fila */
-      }
+    /* Media queries móviles */
+    @media (max-width: 480px) {
       .declaration h1 { font-size: 1.5rem; }
+      .declaration p { font-size: 0.95rem; }
       .question { font-size: 1.1rem; }
-      .btn { width: 100%; }
+      .btn { flex: 1 1 100%; max-width: 100%; }
+      .gallery { grid-template-columns: 1fr; gap: 8px; }
     }
   </style>
 </head>
@@ -182,7 +191,7 @@
 
     <div class="declaration">
       <h1>Para Mi Morochita</h1>
-      <p>La verdad ya no me aguanto más, desde hace 3 meses que hablamos cada día me gustas más y no puedo seguir logrando que tú no me quieras, por esto te hice todo esto,sé que estuvo muy mal mío por eso quiero que me perdones yo se que no soy perfecto yo soy humano como todos y se que cometo muchos errores contigo pero trato de cada vez mejorar para no ser un hombre perfecto si no el hombre que te ame y no te avandonara.y por esa razon te qiero preguntar❤️‍🩹</p>
+      <p>La verdad ya no me aguanto más, desde hace 3 meses que hablamos cada día me gustas más y no puedo seguir logrando que tú no me quieras, por esto te hice todo esto, sé que estuvo muy mal mío, por eso quiero que me perdones. Yo sé que no soy perfecto, soy humano y cometo errores, pero trato de mejorar para ser el hombre que te ame y no te abandone. ❤️‍🩹</p>
 
       <div class="question">¿Quieres ser mi novia?</div>
 
@@ -243,6 +252,7 @@
   </script>
 </body>
 </html>
+
 
     });
   </script>
