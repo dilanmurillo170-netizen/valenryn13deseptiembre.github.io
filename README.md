@@ -16,6 +16,7 @@
       align-items: center;
       min-height: 100vh;
       padding: 20px;
+      box-sizing: border-box;
     }
 
     .container {
@@ -24,16 +25,16 @@
     }
 
     .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 15px;
       margin-bottom: 25px;
     }
 
     .gallery img {
-      max-width: 100%;
+      width: 100%;
       height: auto;
+      object-fit: contain;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       cursor: pointer;
@@ -44,13 +45,13 @@
       transform: scale(1.05);
     }
 
-    /* 📌 Recuadro para el texto */
     .declaration {
-      background: rgba(255, 255, 255, 0.2); /* semi-transparente */
+      background: rgba(255, 255, 255, 0.2);
       padding: 20px;
       border-radius: 15px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-      margin-bottom: 20px;
+      margin: 0 auto 20px auto;
+      max-width: 600px;
     }
 
     .declaration h1 {
@@ -92,6 +93,39 @@
     .btn:hover {
       background: #ff69b4;
       color: #fff;
+    }
+
+    /* Modal de texto */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      z-index: 1000;
+    }
+    .modal-backdrop.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal {
+      background: #fff;
+      color: #333;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 90%;
+      text-align: left;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      position: relative;
+    }
+    .modal h2 {
+      margin-top: 0;
+      color: #ff69b4;
     }
 
     /* Modal de imagen */
@@ -138,22 +172,32 @@
   <div class="container">
     <div class="gallery">
       <img src="https://i.ibb.co/fJQcD85/2.jpg" alt="Foto 1">
-      <img src="https://i.ibb.co/xKhHywX0/2.jpg" alt="Foto 3">
-      <img src="https://i.ibb.co/JLKYrV2/2.jpg" alt="Foto 4">
-      <img src="https://i.ibb.co/7xmHxqZ8/2.jpg" alt="Foto 5">
+      <img src="https://i.ibb.co/jPBwRkzM/2.jpg" alt="Foto 2">
+      <img src="https://i.ibb.co/JLKYrV2/2.jpg" alt="Foto 3">
+      <img src="https://i.ibb.co/7xmHxqZ8/2.jpg" alt="Foto 4">
     </div>
 
-    <!-- 📌 Texto en recuadro -->
     <div class="declaration">
       <h1>Para Mi Morochita</h1>
-      <p>La verdad ya no me aguanto más, desde hace 3 meses que hablamos cada día me gustas más y no puedo seguir logrando que tú no me quieras; por esto te hice todo esto, para que veas que de verdad te quiero y te amo. No dejes de quererme. ❤️‍🩹</p>
+      <p>La verdad ya no me aguanto más, desde hace 3 meses que hablamos cada día me gustas más y no puedo seguir logrando que tú no me quieras, por esto te hice todo esto,sé que estuvo muy mal mío por eso quiero que me perdones yo se que no soy perfecto yo soy humano como todos y se que cometo muchos errores contigo pero trato de cada vez mejorar para no ser un hombre perfecto si no el hombre que te ame y no te avandonara.y por esa razon te qiero preguntar❤️‍🩹</p>
 
       <div class="question">¿Quieres ser mi novia?</div>
 
       <div class="buttons">
-        <button class="btn" onclick="window.location.href='https://wa.me/573146553778?text=Si+quiero+ser+tu+novia+❤️'">Sí ❤️‍🩹</button>
-        <button class="btn" onclick="window.location.href='https://wa.me/573146553778?text=Obviamente+si+quiero+ser+tu+novia+😍'">Obviamente sí 😍</button>
+        <button class="btn" onclick="openThanks()">Sí ❤️‍🩹</button>
+        <button class="btn" onclick="openThanks()">Obviamente sí 😍</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Modal texto -->
+  <div id="modalBackdrop" class="modal-backdrop">
+    <div class="modal">
+      <h2>Gracias por decir que sí ❤️‍🩹</h2>
+      <p>
+        Gracias por decir que sí.  
+        Llevaba estos 3 meses contigo esperando a ser tu novio. Perdóname por haberte hecho enojar tantas veces y por todas esas malas palabras; sé que estuvo muy mal mío, pero de igual manera te amo y no quiero perderte.
+      </p>
     </div>
   </div>
 
@@ -164,10 +208,20 @@
   </div>
 
   <script>
+    const backdrop = document.getElementById('modalBackdrop');
     const viewer = document.getElementById('imageViewer');
     const viewerImg = document.getElementById('viewerImg');
 
-    // Visor de imágenes
+    function openThanks() {
+      backdrop.classList.add('show');
+    }
+
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) {
+        backdrop.classList.remove('show');
+      }
+    });
+
     document.querySelectorAll('.gallery img').forEach(img => {
       img.addEventListener('click', () => {
         viewerImg.src = img.src;
@@ -186,4 +240,3 @@
   </script>
 </body>
 </html>
-
