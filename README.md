@@ -26,7 +26,7 @@
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 15px;
       margin-bottom: 25px;
     }
@@ -34,7 +34,6 @@
     .gallery img {
       width: 100%;
       height: auto;
-      object-fit: contain;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       cursor: pointer;
@@ -163,8 +162,12 @@
 
     /* Responsive */
     @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: 1fr; /* En celular, una imagen por fila */
+      }
       .declaration h1 { font-size: 1.5rem; }
       .question { font-size: 1.1rem; }
+      .btn { width: 100%; }
     }
   </style>
 </head>
@@ -236,6 +239,11 @@
 
     viewer.addEventListener('click', (e) => {
       if (e.target === viewer) closeImage();
+    });
+  </script>
+</body>
+</html>
+
     });
   </script>
 </body>
